@@ -1,0 +1,17 @@
+SOAL
+Buatlah sebuah aplikasi berbasis web bertema “Pendataan Buku di Perpustakaan” dengan
+ketentuan sebagai berikut.
+
+1. Kerjakan secara berkelompok maksimal 3 orang.
+2. Tabel yang harus dibuat: users, buku, penulis. Tabel buku dan penulis saling berelasi (satu
+penulis bisa menulis banyak buku).
+3. Ada fitur login dan logout untuk user.
+4. Fitur CRUD untuk user, buku, dan penulis yang terdiri dari: form input dan edit, tabel
+untuk menampilkan data, link edit dan delete.
+5. Gunakan CSS untuk mempercantik halaman. Jika dapat menggunakan JavaScript/JQuery,
+ada tambahan nilai.
+6. Source code project di-upload ke repositori git (gitlab/github) salah satu anggota dengan
+akses public. Masing-masing anggota kelompok harus berkontribusi pada project tersebut
+(dilihat dari commit masing-masing anggota). Tidak boleh mengupload zip.
+7. Project harus dipresentasikan, di-upload ke youtube dengan durasi total 7 menit. Masingmasing anggota kelompok harus mempresentasikan apa yang sudah dikerjakan.
+8. Link git dan link youtube dikumpulkan di kulino maksimal 13 Januari 2025 pk. 23.59.
