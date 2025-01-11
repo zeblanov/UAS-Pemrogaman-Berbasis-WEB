@@ -1,6 +1,10 @@
 <?php
+session_start();  
 include 'koneksi.php'; 
-
+if (!$_SESSION['isLoggedIn']) 
+{
+    header("Location: login.php");
+}
 $query = $koneksi->prepare("SELECT buku.*, penulis.nama FROM buku JOIN penulis ON buku.id_penulis = penulis.id");
 $query->execute();
 ?>
