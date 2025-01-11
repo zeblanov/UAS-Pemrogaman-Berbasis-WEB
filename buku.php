@@ -20,7 +20,7 @@ $query->execute();
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>No</th>
                     <th>Judul</th>
                     <th>Tahun</th>
                     <th>Penulis</th>
@@ -29,10 +29,11 @@ $query->execute();
             </thead>
             <tbody>
                 <?php 
+                $no =1;
                 while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
                 ?>
                     <tr>
-                        <td><?= $row['id']; ?></td>
+                        <td><?= $no++;; ?></td>
                         <td><?= $row['judul']; ?></td>
                         <td><?= $row['tahun']; ?></td>
                         <td><?= $row['nama'] ?? 'Tidak diketahui'; ?></td> 
