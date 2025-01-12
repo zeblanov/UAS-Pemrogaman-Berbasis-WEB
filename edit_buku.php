@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dbh = $koneksi->prepare("UPDATE buku SET judul = ?,penulis = ? , tahun = ?,updated_at = ? WHERE id = ?");
     $dbh->execute([$judul, $penulis, $tahun, $updated_at, $id_buku]);
     
-    header("Location: home.php");
+    header("Location: home2.php");
     exit();
 }
 
@@ -29,7 +29,7 @@ if (isset($_GET['id'])) {
 
     if (!$book) {
         echo "<script>alert('Buku tidak ditemukan!');</script>";
-        header("Location: buku.php");
+        header("Location: buku2.php");
         exit();
     }
 }
