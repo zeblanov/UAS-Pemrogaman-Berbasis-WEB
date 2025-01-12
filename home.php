@@ -26,7 +26,7 @@ $dbh->execute();
             background-color: #f8f9fa;
         }
         .navbar {
-            background-color: #343a40;
+            background-color:rgb(25, 75, 124);
         }
         .navbar a {
             color: #fff;
@@ -34,7 +34,7 @@ $dbh->execute();
         .container {
             background-color: #fff;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(22, 71, 160, 0.1);
             padding: 20px;
             margin-top: 30px;
         }
@@ -52,7 +52,7 @@ $dbh->execute();
         .card {
             border: none;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(15, 9, 208, 0.1);
         }
         .card-header {
             background-color: #007bff;
@@ -64,7 +64,7 @@ $dbh->execute();
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
         <div class="container-fluid">
             <a class="navbar-brand" href="home.php">Perpustakaan Online</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -116,8 +116,8 @@ $dbh->execute();
         </thead>
         <tbody>
             <?php
-            $index = 1; // Initialize book number
-            while ($row = $dbh->fetch(PDO::FETCH_ASSOC)): // Loop through each row
+            $index = 1; 
+            while ($row = $dbh->fetch(PDO::FETCH_ASSOC)): 
             ?>
             <tr>
                 <td><?php echo $index++; ?></td>
@@ -125,8 +125,8 @@ $dbh->execute();
                 <td><?php echo isset($row['penulis']) ? $row['penulis'] : 'Penulis tidak tersedia'; ?></td>
                 <td><?php echo $row['tahun']; ?></td>
                 <td>
-                    <a href="edit_buku.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="delete_buku.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">Hapus</a>
+                    <a href="edit_buku.php?id=<?php echo $row['id']; ?>" class="btn btn-info btn-sm">Edit</a>
+                    <a href="delete_buku.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">Hapus</a>
                 </td>
             </tr>
             <?php endwhile; ?>
