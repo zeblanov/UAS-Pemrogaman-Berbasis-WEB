@@ -9,7 +9,7 @@ echo "Selamat datang, ",$_SESSION ['username'];
 
 include 'koneksi.php'; 
 $dbh = "SELECT * FROM buku WHERE isdel = 0";
-$dbh = $koneksi->prepare($query);
+$dbh = $koneksi->prepare($dbh);
 $dbh->execute();
 
 ?>
