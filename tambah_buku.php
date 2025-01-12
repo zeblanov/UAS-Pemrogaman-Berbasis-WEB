@@ -8,24 +8,21 @@ if(!$_SESSION['isLoggedIn'])
 
 }
 
-$query = $koneksi->prepare("SELECT * FROM penulis");
-$query->execute();
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $judul = $_POST['judul'];
+    $penulis = $_POST['penulis']; 
     $tahun = $_POST['tahun'];
-    $id_penulis = $_POST['id_penulis']; 
     $created_at = date('Y-m-d H:i:s');
     $updated_at = date('Y-m-d H:i:s');
 
-    if ($id_penulis === '') {
-        echo "<script>alert('Penulis harus dipilih!');</script>";
-    } else {
-        $query = $koneksi->prepare("INSERT INTO buku (judul, tahun, id_penulis, created_at, updated_at) VALUES (?, ?, ?, ?, ?)");
-        $query->execute([$judul, $tahun, $id_penulis, $created_at, $updated_at]);
-        
+    $dbh = $koneksi->prepare("INSERT INTO buku (judul, penulis, tahun, created_at, updated_at) VALUES (?, ?, ?, ?, ?)");
+   $executeResult= $dbh->execute([$judul, $penulis, $tahun, $created_at, $updated_at]);
+
+    if ($executeResult) {
         header("Location: buku.php");
         exit();
+    } else {
+        echo "Terjadi Kesalahan saat menambahkan buku.";   
     }
 }
 ?>
@@ -47,23 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="text" class="form-control" id="judul" name="judul" required>
             </div>
             <div class="mb-3">
-                <label for="id_penulis" class="form-label">Penulis</label>
-                <select id="id_penulis" name="id_penulis" class="form-control" required>
-                    <option value="">Pilih Penulis</option>
-                    <?php 
-                    
-                    while ($p = $query->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-                        <option value="<?= $p['id']; ?>"><?= $p['nama']; ?></option>
-                    <?php } ?>
-                </select>
-            </div>
+                <label for="penulis" class="form-label">Penulis</label>
+                <select id="penulis" name="penulis" class="form-control" required>
+            </div>      
             <div class="mb-3">
                 <label for="tahun" class="form-label">Tahun Terbit</label>
                 <input type="number" class="form-control" id="tahun" name="tahun" required>
             </div>
             <button type="submit" class="btn btn-primary">Simpan</button>
-            <a href="buku.php" class="btn btn-secondary">Batal</a>
+            <a href="home.php" class="btn btn-secondary">Batal</a>
         </form>
     </div>
 </body>
