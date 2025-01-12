@@ -8,10 +8,9 @@ if(!$_SESSION['isLoggedIn'])
 echo "Selamat datang, ",$_SESSION ['username'];
 
 include 'koneksi.php'; 
-$dbh = $koneksi->query("SELECT * FROM buku WHERE isdel = 0");
-$bukus = $dbh->fetch(PDO::FETCH_ASSOC);
-$dbh = $koneksi->query("SELECT * FROM penulis WHERE 1");
-$bukus = $dbh->fetch(PDO::FETCH_ASSOC); 
+$dbh = "SELECT * FROM buku WHERE isdel = 0";
+$dbh = $koneksi->prepare($query);
+$dbh->execute();
 
 ?>
 <!DOCTYPE html>
@@ -67,14 +66,14 @@ $bukus = $dbh->fetch(PDO::FETCH_ASSOC);
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Perpustakaan Online</a>
+            <a class="navbar-brand" href="home.php">Perpustakaan Online</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="tambah_buku.php">Buku</a>
+                        <a class="nav-link" href="home.php">Buku</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="penulis.php">Penulis</a>
@@ -89,6 +88,53 @@ $bukus = $dbh->fetch(PDO::FETCH_ASSOC);
             </div>
         </div>
     </nav>
+    <section id="hero" class="text-center p-5 bg-primary">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="fw-bold display-4 text-black">Welcome to the library website</h1>
+                <h4 class="lead display-6 text-black">Temukan koleksi Buku kami</h4>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center">
+                <img src="https://img2.storyblok.com/1200x600/filters:focal(603x501:604x502):quality(90)/f/60990/1200x666/34093b645f/perpustakaan.jpg" alt="Gambar Perpustakaan" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <h1 class="my-4">Daftar Buku</h1>
+    <a href="tambah_buku.php" class="btn btn-primary mb-3">Tambah Buku</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Judul Buku</th>
+                <th>Penulis</th>
+                <th>Tahun Terbit</th>
+                <th colspan="2">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $index = 1; // Initialize book number
+            while ($row = $dbh->fetch(PDO::FETCH_ASSOC)): // Loop through each row
+            ?>
+            <tr>
+                <td><?php echo $index++; ?></td>
+                <td><?php echo $row['judul']; ?></td>
+                <td><?php echo isset($row['penulis']) ? $row['penulis'] : 'Penulis tidak tersedia'; ?></td>
+                <td><?php echo $row['tahun']; ?></td>
+                <td>
+                    <a href="edit_buku.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="delete_buku.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">Hapus</a>
+                </td>
+            </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 </body>
