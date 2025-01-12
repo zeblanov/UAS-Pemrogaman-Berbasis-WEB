@@ -4,12 +4,10 @@ include 'koneksi.php';
 function tambahPenulis($koneksi, $nama, $email) {
     try {
         $dbh = $koneksi->prepare("INSERT INTO penulis (nama, email) VALUES (:nama, :email)");
-        
         $dbh->execute([
             ':nama' => htmlspecialchars($nama),
             ':email' => htmlspecialchars($email),
         ]);
-
         return true; 
     } catch (PDOException $e) {
         error_log("Gagal menambah penulis: " . $e->getMessage());
@@ -17,15 +15,16 @@ function tambahPenulis($koneksi, $nama, $email) {
     }
 }
 
+$error = '';
+$success = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nama = filter_input(INPUT_POST, 'nama');
-    $email = filter_input(INPUT_POST, 'email');
+    $nama = filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 
     if ($nama && $email) {
         if (tambahPenulis($koneksi, $nama, $email)) {
-        
-            header("Location: penulis.php");
-            exit();
+            $success = "Penulis berhasil ditambahkan.";
         } else {
             $error = "Gagal menambah penulis. Silakan coba lagi.";
         }
@@ -49,29 +48,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             padding: 20px;
         }
         .container {
-            max-width: 500px;
-            margin: 50px auto;
+            max-width: 600px;
             background-color: #ffffff;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 30px;
+            margin: auto;
+            margin-top: 50px;
         }
         h1 {
             text-align: center;
-            color: #2c3e50;
+            color: #007bff;
             margin-bottom: 20px;
         }
         label {
             font-weight: bold;
-            color: #34495e;
+            color: #495057;
         }
-        input {
+        input[type="text"], input[type="email"] {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
             margin-bottom: 15px;
-            border: 1px solid #ccc;
+            border: 1px solid #ced4da;
             border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        input[type="text"]:focus, input[type="email"]:focus {
+            border-color: #80bdff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         }
         button {
             background-color: #007bff;
@@ -94,10 +100,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             border-radius: 5px;
             margin-bottom: 10px;
         }
+        .success {
+            color: green;
+            background: #e6ffed;
+            padding: 10px;
+            border: 1px solid #b7ffcd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
         .btn-back {
-            display: block;
-            text-align: center;
-            margin-top: 10px;
+            display: inline-block;
+            margin-top: 15px;
             color: #007bff;
             text-decoration: none;
         }
@@ -108,18 +121,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="container">
-        <h1><bold>Tambah Penulis</bold></h1>
+        <h1>Tambah Penulis</h1>
         <form method="POST">
             <?php if (!empty($error)): ?>
-                <div class="error"><?= $error ?></div>
+                <div class="error"> <?= $error ?> </div>
             <?php endif; ?>
-            <label for="nama">Nama:</label>
-            <input type="text" id="nama" name="nama" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <?php if (!empty($success)): ?>
+                <div class="success"> <?= $success ?> </div>
+            <?php endif; ?>
+            <label>Nama:</label>
+            <input type="text" name="nama" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
             <button type="submit">Simpan</button>
         </form>
         <a href="penulis.php" class="btn-back">Kembali ke Daftar Penulis</a>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
