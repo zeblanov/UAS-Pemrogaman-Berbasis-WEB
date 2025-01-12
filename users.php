@@ -76,8 +76,8 @@ $result = $koneksi->query($query);
                 ?>
                 <tr>
                     <td><?php echo $no++; ?></td>
-                    <td><?php echo htmlspecialchars($user['username']); ?></td>
-                    <td><?php echo htmlspecialchars($user['email']); ?></td>
+                    <td><?php echo ($user['username']); ?></td>
+                    <td><?php echo ($user['email']); ?></td>
                     <td>
                         <span class="badge <?php echo $user['active'] ? 'bg-success' : 'bg-secondary'; ?>">
                             <?php echo $user['active'] ? 'Aktif' : 'Tidak Aktif'; ?>
