@@ -15,11 +15,11 @@ $query->execute();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: aliceblue; /* Abu-abu muda */
+            background-color: #e1f5fe; /* Light cyan background */
         }
 
         h1 {
-            color: #3498db; /* Biru */
+            color: #00bcd4; /* Primary cyan */
             text-align: center;
             margin-bottom: 20px;
         }
@@ -33,12 +33,12 @@ $query->execute();
         }
 
         .btn-primary {
-            background-color: #3498db;
+            background-color: #00bcd4; /* Primary cyan button */
             color: white;
             border: none;
         }
         .btn-primary:hover {
-            background-color: #0056b3;
+            background-color: #008c99; /* Darker cyan on hover */
         }
 
         .table {
@@ -46,12 +46,12 @@ $query->execute();
         }
 
         .table th {
-            background-color: #3498db; /* Header biru */
+            background-color: #00bcd4; /* Header primary cyan */
             color: white;
         }
 
         .table td {
-            background-color: #e9ecef; /* Baris abu-abu terang */
+            background-color: #e9ecef; /* Light gray background for rows */
         }
 
         .btn-success {
@@ -78,12 +78,10 @@ $query->execute();
 </head>
 <body>
     <div class="container mt-5">
-       
-
         <div class="form-container mb-4">
             <table class="table table-bordered">
                 <thead>
-                <h1>Daftar Penulis</h1>
+                    <h1>Daftar Penulis</h1>
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
