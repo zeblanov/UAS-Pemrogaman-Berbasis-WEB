@@ -39,11 +39,11 @@ try {
             text-align: center;
         }
         h1 {
-            color: #dc3545;
+            color: #00bcd4; /* Primary cyan for heading */
             margin-bottom: 20px;
         }
         .error {
-            color: red;
+            color: #d32f2f; /* Darker red for error */
             background: #ffe5e5;
             padding: 10px;
             border: 1px solid #ffcccc;
@@ -51,7 +51,7 @@ try {
             margin-bottom: 10px;
         }
         .success {
-            color: green;
+            color: #388e3c; /* Dark green for success */
             background: #e6ffed;
             padding: 10px;
             border: 1px solid #b7ffcd;
@@ -61,7 +61,7 @@ try {
         a {
             display: inline-block;
             margin-top: 20px;
-            color: #007bff;
+            color: #00bcd4; /* Primary cyan for link */
             text-decoration: none;
         }
         a:hover {
