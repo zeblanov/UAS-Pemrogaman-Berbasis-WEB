@@ -5,18 +5,18 @@ include 'koneksi.php';
 if(!$_SESSION['isLoggedIn'])
 {
     header("Location: login.php");
-
+    exit();
 }
-if (isset($_GET['id'])) {
     $id_buku = $_GET['id'];
 
-    $query = $koneksi->prepare("DELETE FROM buku WHERE id = ?");
-    $query->execute([$id_buku]);
+    $dbh = $koneksi->prepare("UPDATE buku SET isdel = ?, deleted_by = ?, deleted_at = ? WHERE id = ?");
+    $dbh->execute([
+        1,
+        $_SESSION['username'],
+        date("Y-m-d H:i:s"),
+        $id]);
 
-    header("Location: buku.php");
+    header("Location: home.php");
     exit();
-} else {
-    echo "ID buku tidak ditemukan!";
-    exit();
-}
+
 ?>
