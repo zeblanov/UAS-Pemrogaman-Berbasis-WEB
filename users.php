@@ -49,7 +49,7 @@ $result = $koneksi->query($query);
         }
     </style>
 </head>
-<body>
+<body >
 
             
         
@@ -84,8 +84,8 @@ $result = $koneksi->query($query);
                         </span>
                     </td>
                     <td>
-                        <a href="edit_users.php?id=<?php echo $user['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="delete_users.php?id=<?php echo $user['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
+                        <a href="edit_users.php?id=<?php echo $user['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="delete_users.php?id=<?php echo $user['id']; ?>" class="btn btn-info btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
                     </td>
                 </tr>
                 <?php endwhile; ?>
