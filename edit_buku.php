@@ -9,29 +9,30 @@ if(!$_SESSION['isLoggedIn']) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_buku = $_POST['id_buku'];
     $judul = $_POST['judul'];
-    $tahun = $_POST['tahun'];
-    $id_penulis = $_POST['id_penulis']; 
+    $penulis = $_POST['penulis'];
+    $tahun = $_POST['tahun']; 
     $updated_at = date('Y-m-d H:i:s');
     
-    $query = $koneksi->prepare("UPDATE buku SET judul = ?, tahun = ?, id_penulis = ?, updated_at = ? WHERE id = ?");
-    $query->execute([$judul, $tahun, $id_penulis, $updated_at, $id_buku]);
+    $dbh = $koneksi->prepare("UPDATE buku SET judul = ?,penulis = ? , tahun = ?,updated_at = ? WHERE id = ?");
+    $dbh->execute([$judul, $penulis, $tahun, $updated_at, $id_buku]);
     
-    header("Location: buku.php");
+    header("Location: home.php");
     exit();
 }
 
-$id_buku = $_GET['id'];
-$query = $koneksi->prepare("SELECT buku.id, buku.judul, buku.tahun, buku.id_penulis, penulis.nama FROM buku JOIN penulis ON buku.id_penulis = penulis.id WHERE buku.id = ?");
-$query->execute([$id_buku]);
-$book = $query->fetch(PDO::FETCH_ASSOC);
+if (isset($_GET['id'])) {
+    $id_buku = $_GET['id'];
 
-if (!$book) {
-    echo "Buku tidak ditemukan!";
-    exit();
+    $dbh = $koneksi->prepare("SELECT id, judul, penulis, tahun FROM buku WHERE id = ?");
+    $dbh->execute([$id_buku]);
+    $book = $dbh->fetch(PDO::FETCH_ASSOC);
+
+    if (!$book) {
+        echo "<script>alert('Buku tidak ditemukan!');</script>";
+        header("Location: buku.php");
+        exit();
+    }
 }
-
-$penulisQuery = $koneksi->prepare("SELECT id, nama FROM penulis");
-$penulisQuery->execute();
 ?>
 
 <!DOCTYPE html>
@@ -54,27 +55,17 @@ $penulisQuery->execute();
             </div>
             
             <div class="mb-3">
+                <label for="penulis" class="form-label">Penulis</label>
+                <input type="text" class="form-control" id="penulis" name="penulis" value="<?php echo $book['penulis']; ?>" required>
+            </div>
+
+            <div class="mb-3">
                 <label for="tahun" class="form-label">Tahun Terbit</label>
                 <input type="number" class="form-control" id="tahun" name="tahun" value="<?php echo $book['tahun']; ?>" required>
             </div>
             
-            <div class="mb-3">
-                <label for="id_penulis" class="form-label">Penulis</label>
-                <select class="form-select" id="id_penulis" name="id_penulis" required>
-                    <option value="">Pilih Penulis</option>
-                    <?php 
-
-                    while ($penulis = $penulisQuery->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-                        <option value="<?= $penulis['id']; ?>" <?php echo $penulis['id'] == $book['id_penulis'] ? 'selected' : ''; ?>>
-                            <?= $penulis['nama']; ?>
-                        </option>
-                    <?php } ?>
-                </select>
-            </div>
-            
             <button type="submit" class="btn btn-primary">Update</button>
-            <a href="buku.php" class="btn btn-secondary">Batal</a>
+            <a href="home.php" class="btn btn-secondary">Batal</a>
         </form>
     </div>
 </body>
