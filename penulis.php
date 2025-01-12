@@ -74,59 +74,38 @@ $query->execute();
             justify-content: center;
             gap: 10px;
         }
-
-        .card-columns {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            border: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .card-body {
-            background-color: #ffffff;
-        }
-
-        .card-title {
-            color: #00bcd4;
-            font-size: 1.25rem;
-        }
-
-        .card-text {
-            color: #555;
-        }
-
-        .card-footer {
-            background-color: transparent;
-            border-top: 1px solid #e1e1e1;
-        }
     </style>
 </head>
 <body>
     <div class="container mt-5">
         <div class="form-container mb-4">
-            <h1>Daftar Penulis</h1>
-            <div class="card-columns">
-                <?php 
-                while ($row = $query->fetch(PDO::FETCH_ASSOC)): 
-                ?>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= htmlspecialchars($row['nama']); ?></h5>
-                            <p class="card-text"><?= htmlspecialchars($row['email']); ?></p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="edit_penulis.php?id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="delete_penulis.php?id=<?= $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
-                        </div>
-                    </div>
-                <?php endwhile; ?>
-            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <h1>Daftar Penulis</h1>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                    $no = 1; 
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC)): 
+                    ?>
+                        <tr>
+                            <td><?= $no++; ?></td>
+                            <td><?= htmlspecialchars($row['nama']); ?></td>
+                            <td><?= htmlspecialchars($row['email']); ?></td>
+                            <td>
+                                <a href="edit_penulis.php?id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="delete_penulis.php?id=<?= $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
         </div>
 
         <!-- Tombol di bawah untuk tambah penulis dan kembali ke home -->
