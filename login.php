@@ -36,6 +36,7 @@ if (isset($_SESSION['isLoggedIn'])) {
 <body>
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4" style="max-width: 400px; width: 100%;">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/019/879/198/small_2x/user-icon-on-transparent-background-free-png.png" alt="user icon">
             <h3 class="text-center mb-4">Login Perpustakaan</h3>
             <form action="aksilogin.php" method="post">
                 <div class="mb-3">
