@@ -49,7 +49,7 @@ $result = $koneksi->query($query);
         }
     </style>
 </head>
-<body>
+<body >
 
             
         
@@ -76,20 +76,20 @@ $result = $koneksi->query($query);
                 ?>
                 <tr>
                     <td><?php echo $no++; ?></td>
-                    <td><?php echo htmlspecialchars($user['username']); ?></td>
-                    <td><?php echo htmlspecialchars($user['email']); ?></td>
+                    <td><?php echo ($user['username']); ?></td>
+                    <td><?php echo ($user['email']); ?></td>
                     <td>
                         <span class="badge <?php echo $user['active'] ? 'bg-success' : 'bg-secondary'; ?>">
                             <?php echo $user['active'] ? 'Aktif' : 'Tidak Aktif'; ?>
                         </span>
                     </td>
                     <td>
-                        <a href="edit_users.php?id=<?php echo $user['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="delete_users.php?id=<?php echo $user['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
+                        <a href="edit_users.php?id=<?php echo $user['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="delete_users.php?id=<?php echo $user['id']; ?>" class="btn btn-info btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
                     </td>
                 </tr>
                 <?php endwhile; ?>
-            </tbody>
+            </tbody>    
         </table>
 
         <a href="home.php" class="btn btn-secondary">Kembali</a>
