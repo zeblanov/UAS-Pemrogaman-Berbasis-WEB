@@ -25,47 +25,54 @@ try {
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
+            background-color: #f1f1f1;
             padding: 20px;
         }
         .container {
             max-width: 600px;
             background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
             margin: auto;
-            margin-top: 50px;
+            margin-top: 70px;
             text-align: center;
         }
         h1 {
-            color: #00bcd4; /* Primary cyan for heading */
+            color: #00796b; /* Teal color */
             margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: bold;
         }
         .error {
-            color: #d32f2f; /* Darker red for error */
+            color: #d32f2f; /* Dark red for error */
             background: #ffe5e5;
-            padding: 10px;
+            padding: 15px;
             border: 1px solid #ffcccc;
             border-radius: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
         }
         .success {
-            color: #388e3c; /* Dark green for success */
+            color: #388e3c; /* Green for success */
             background: #e6ffed;
-            padding: 10px;
+            padding: 15px;
             border: 1px solid #b7ffcd;
             border-radius: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
         }
         a {
             display: inline-block;
-            margin-top: 20px;
-            color: #00bcd4; /* Primary cyan for link */
+            margin-top: 25px;
+            color: #00796b;
             text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
         }
         a:hover {
             text-decoration: underline;
+            color: #004d40;
         }
     </style>
 </head>
