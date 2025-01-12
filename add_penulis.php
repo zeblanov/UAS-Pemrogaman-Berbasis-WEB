@@ -19,8 +19,8 @@ $error = '';
 $success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nama = filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    $nama = filter_input(INPUT_POST, 'nama');
+    $email = filter_input(INPUT_POST, 'email');
 
     if ($nama && $email) {
         if (tambahPenulis($koneksi, $nama, $email)) {
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         h1 {
             text-align: center;
-            color: #007bff;
+            color: #00bcd4; /* Primary cyan color */
             margin-bottom: 20px;
         }
         label {
@@ -75,12 +75,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background-color: #f8f9fa;
         }
         input[type="text"]:focus, input[type="email"]:focus {
-            border-color: #80bdff;
+            border-color: #00bcd4; /* Focus border in primary cyan */
             outline: none;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            box-shadow: 0 0 5px rgba(0, 188, 212, 0.5); /* Primary cyan focus shadow */
         }
         button {
-            background-color: #007bff;
+            background-color: #00bcd4; /* Primary cyan button */
             color: white;
             padding: 10px 15px;
             border: none;
@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             width: 100%;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #008c99; /* Darker cyan on hover */
         }
         .error {
             color: red;
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .btn-back {
             display: inline-block;
             margin-top: 15px;
-            color: #007bff;
+            color: #00bcd4; /* Primary cyan for back button */
             text-decoration: none;
         }
         .btn-back:hover {
