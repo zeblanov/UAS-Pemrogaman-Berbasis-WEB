@@ -89,7 +89,7 @@ $result = $koneksi->query($query);
                     </td>
                 </tr>
                 <?php endwhile; ?>
-            </tbody>
+            </tbody>    
         </table>
 
         <a href="home.php" class="btn btn-secondary">Kembali</a>
