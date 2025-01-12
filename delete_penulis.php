@@ -25,7 +25,7 @@ try {
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f1f1f1;
+            background-color:  #e1f5fe;
             padding: 20px;
         }
         .container {
@@ -39,7 +39,7 @@ try {
             text-align: center;
         }
         h1 {
-            color: #00796b; /* Teal color */
+            color: #00bcd4; /* Cyan color for heading */
             margin-bottom: 20px;
             font-size: 28px;
             font-weight: bold;
@@ -65,14 +65,14 @@ try {
         a {
             display: inline-block;
             margin-top: 25px;
-            color: #00796b;
+            color: #00bcd4; /* Cyan color for link */
             text-decoration: none;
             font-size: 18px;
             font-weight: 500;
         }
         a:hover {
             text-decoration: underline;
-            color: #004d40;
+            color: #008c8c; /* Darker cyan for link hover */
         }
     </style>
 </head>
