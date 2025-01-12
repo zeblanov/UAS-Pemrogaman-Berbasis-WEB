@@ -57,14 +57,14 @@ try {
     <div class="container mt-5">
         <h1>Edit Pengguna</h1>
         <form method="POST">
-            <input type="hidden" name="id_user" value="<?php echo htmlspecialchars($user['id']); ?>">
+            <input type="hidden" name="id_user" value="<?php echo ($user['id']); ?>">
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" value="<?php echo htmlspecialchars($user['username']); ?>" required>
+                <input type="text" class="form-control" id="username" name="username" value="<?php echo ($user['username']); ?>" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
+                <input type="email" class="form-control" id="email" name="email" value="<?php echo($user['email']); ?>" required>
             </div>
             <div class="mb-3">
                 <label for="active" class="form-label">Status</label>
