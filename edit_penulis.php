@@ -53,7 +53,7 @@ try {
         }
         h1 {
             text-align: center;
-            color: #007bff;
+            color: #00bcd4; /* Primary cyan for heading */
             margin-bottom: 20px;
         }
         label {
@@ -70,12 +70,12 @@ try {
             background-color: #f8f9fa;
         }
         input[type="text"]:focus, input[type="email"]:focus {
-            border-color: #80bdff;
+            border-color: #00bcd4; /* Focus border in primary cyan */
             outline: none;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            box-shadow: 0 0 5px rgba(0, 188, 212, 0.5); /* Primary cyan focus shadow */
         }
         button {
-            background-color: #007bff;
+            background-color: #00bcd4; /* Primary cyan button */
             color: white;
             padding: 10px 15px;
             border: none;
@@ -85,10 +85,10 @@ try {
             width: 100%;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #008c99; /* Darker cyan on hover */
         }
         .error {
-            color: red;
+            color: #d32f2f; /* Dark red for error */
             background: #ffe5e5;
             padding: 10px;
             border: 1px solid #ffcccc;
@@ -96,7 +96,7 @@ try {
             margin-bottom: 10px;
         }
         .success {
-            color: green;
+            color: #388e3c; /* Dark green for success */
             background: #e6ffed;
             padding: 10px;
             border: 1px solid #b7ffcd;
@@ -106,7 +106,7 @@ try {
         .btn-back {
             display: inline-block;
             margin-top: 15px;
-            color: #007bff;
+            color: #00bcd4; /* Primary cyan for back button */
             text-decoration: none;
         }
         .btn-back:hover {
