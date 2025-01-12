@@ -16,7 +16,7 @@ if(!$_SESSION['isLoggedIn'])
         date("Y-m-d H:i:s"),
         $id]);
 
-    header("Location: home2.php");
+    header("Location: home.php");
     exit();
 
 ?>

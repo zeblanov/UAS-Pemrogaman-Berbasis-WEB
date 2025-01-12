@@ -5,7 +5,6 @@ include 'koneksi.php';
 if(!$_SESSION['isLoggedIn'])
 {
     header("Location: login.php");
-
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    $executeResult= $dbh->execute([$judul, $penulis, $tahun, $created_at, $updated_at]);
 
     if ($executeResult) {
-        header("Location: buku2.php");
+        header("Location: home.php");
         exit();
     } else {
         echo "Terjadi Kesalahan saat menambahkan buku.";   
@@ -52,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="number" class="form-control" id="tahun" name="tahun" required>
             </div>
             <button type="submit" class="btn btn-primary">Simpan</button>
-            <a href="home2.php" class="btn btn-secondary">Batal</a>
+            <a href="home.php" class="btn btn-secondary">Batal</a>
         </form>
     </div>
 </body>
