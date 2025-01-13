@@ -56,7 +56,7 @@ if (isset($_GET['id'])) {
             
             <div class="mb-3">
                 <label for="penulis" class="form-label">Penulis</label>
-                <input type="text" class="form-control" id="penulis" name="penulis" required>
+                <input type="text" class="form-control" id="penulis" name="penulis" value="<?php echo $book['penulis']; ?>" required>
             </div> 
 
             <div class="mb-3">

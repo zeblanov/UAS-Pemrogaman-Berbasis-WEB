@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="mb-3">
                 <label for="penulis" class="form-label">Penulis</label>
-                <select id="penulis" name="penulis" class="form-control" required>
+                <input type="text" class="form-control" id="penulis" name="penulis" required>
             </div>      
             <div class="mb-3">
                 <label for="tahun" class="form-label">Tahun Terbit</label>
